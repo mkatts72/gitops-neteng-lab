@@ -2,7 +2,7 @@ name: GitOps Network Pipeline
 
 on:
   push:
-    branches"
+    branches:
       - main
   workflow_dispatch:
 
@@ -10,10 +10,11 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - name: check out repository
+      - name: Check out repository
         uses: actions/checkout@v4
       - name: Run validation script
         run: ./scripts/validate_configs.sh
+
   package:
     needs: validate
     runs-on: ubuntu-latest
